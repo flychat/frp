@@ -1,5 +1,13 @@
 # Dockerfile and docker-compose for `fatedier/frp`
 
+## Added
+
+- frp 0.28.2
+- docker-compose up -d 
+	- then you'll get a socks5 proxy
+	- port: 7019 
+- privilege_token=frp
+
 ## Usage
 
 ```bash
