@@ -1,0 +1,30 @@
+version: '2'
+services:
+  frps:
+    image: frps:0.28.2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./config:/frp/config
+      - ./log:/frp/log
+    ports:
+      - "7000-7020:7000-7020"
+      - "7000:7000/udp" # kcp_bind_port
+      - "7500:7500"
+      - "80:80"
+      - "443:443"
+    entrypoint:
+      - '/frp/frps'
+      - '-c'
+      - '/frp/frps.ini'
+
+  socks5:
+    depends_on:
+      - frps
+    image: frps:0.28.2
+    restart: always
+    volumes:
+      - ./config:/frp/config
+      - ./log:/frp/log
