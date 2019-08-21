@@ -1,9 +1,6 @@
 log/*
 !log/.keep
 
-config/frpc.ini
-config/frps.ini
-
 # emacs temp file
 .#*
 deploy
